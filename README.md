@@ -1,8 +1,6 @@
 # Home Network Security Lab
 
-**Author:** Segun Olawunmi — Junior Cybersecurity Analyst  
-**Location:** Oakville, Ontario, Canada  
-**Status:** ✅ Complete and verified  
+**Author:** Segun Olawunmi — Cybersecurity Analyst
 
 ---
 
