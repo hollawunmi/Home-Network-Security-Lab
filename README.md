@@ -12,12 +12,15 @@ This project documents the design and implementation of an enterprise-grade segm
 
 ## Hardware
 
-| Device | Model | IP Address | Role |
-|--------|-------|------------|------|
-| ISP Modem | Sagemcom Hub 4000 | 192.168.2.1 | ISP gateway (CG-NAT) |
-| Router | TP-Link ER605 | 192.168.10.1 / 192.168.0.1 | Core router, VLAN gateway, VPN server |
-| Switch | TP-Link TL-SG108E | 192.168.0.101 | Managed 8-port switch |
-| Access Point | TP-Link EAP245 V3 | 192.168.0.102 | Dual-band WiFi AP |
+| Device | Model | IP Address | Role | Cost (CAD) |
+|--------|-------|------------|------|------------|
+| ISP Modem | Sagemcom Hub 4000 | 192.168.2.1 | ISP gateway (CG-NAT) | ISP provided |
+| Router | TP-Link ER605 | 192.168.10.1 / 192.168.0.1 | Core router, VLAN gateway, VPN server | $84.99 |
+| Switch | TP-Link TL-SG108E | 192.168.0.101 | Managed 8-port switch | $34.99 |
+| Access Point | TP-Link EAP245 V3 | 192.168.0.102 | Dual-band WiFi AP | $112.99 |
+| Cabling | UGREEN Cat6 x6 | — | Physical connections | $51.24 |
+
+**Total hardware cost: $284 CAD (~$205 USD)**
 
 **ISP:** Virgin Plus (Bell Canada) — 580 Mbps down, CG-NAT confirmed
 
