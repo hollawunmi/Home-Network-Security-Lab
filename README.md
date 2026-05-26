@@ -70,7 +70,7 @@ Firewall rules enforce zero lateral movement between zones. IoT and Guest device
 
 ## VPN
 
-WireGuard VPN server configured on the ER605 for encrypted remote access. CG-NAT from Virgin Plus prevents direct external connections — Tailscale used as a relay for remote access.
+WireGuard VPN server configured on the ER605 for encrypted remote access. CG-NAT from Virgin Plus prevents direct external connections Tailscale used as a relay for remote access.
 
 ---
 
