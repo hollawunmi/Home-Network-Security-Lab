@@ -1,8 +1,6 @@
 # Home Network Security Lab
 
-**Author:** Segun Olawunmi — Junior Cybersecurity Analyst  
-**Location:** Oakville, Ontario, Canada  
-**Status:** ✅ Complete and verified  
+**Author:** Segun Olawunmi — Cybersecurity Analyst 
 
 ---
 
@@ -14,12 +12,15 @@ This project documents the design and implementation of an enterprise-grade segm
 
 ## Hardware
 
-| Device | Model | IP Address | Role |
-|--------|-------|------------|------|
-| ISP Modem | Sagemcom Hub 4000 | 192.168.2.1 | ISP gateway (CG-NAT) |
-| Router | TP-Link ER605 | 192.168.10.1 / 192.168.0.1 | Core router, VLAN gateway, VPN server |
-| Switch | TP-Link TL-SG108E | 192.168.0.101 | Managed 8-port switch |
-| Access Point | TP-Link EAP245 V3 | 192.168.0.102 | Dual-band WiFi AP |
+| Device | Model | IP Address | Role | Cost (CAD) |
+|--------|-------|------------|------|------------|
+| ISP Modem | Sagemcom Hub 4000 | 192.168.2.1 | ISP gateway (CG-NAT) | ISP provided |
+| Router | TP-Link ER605 | 192.168.10.1 / 192.168.0.1 | Core router, VLAN gateway, VPN server | $84.99 |
+| Switch | TP-Link TL-SG108E | 192.168.0.101 | Managed 8-port switch | $34.99 |
+| Access Point | TP-Link EAP245 V3 | 192.168.0.102 | Dual-band WiFi AP | $112.99 |
+| Cabling | UGREEN Cat6 x6 | — | Physical connections | $51.24 |
+
+**Total hardware cost: $284 CAD (~$205 USD)**
 
 **ISP:** Virgin Plus (Bell Canada) — 580 Mbps down, CG-NAT confirmed
 
@@ -36,24 +37,10 @@ This project documents the design and implementation of an enterprise-grade segm
 | 20 | IoT_Isolated | 192.168.20.0/24 | Android TV, Smart TV, PS5, IoT devices |
 | 30 | Guest_WiFi | 192.168.30.0/24 | Visitors, untrusted devices |
 
-### Network Topology
+### Network Topology Diagram
 
-```
-Virgin Plus → Hub 4000 (192.168.2.1)
-                  ↓ LAN (Cat6)
-             ER605 WAN port
-                  ↓ LAN port 1 (Cat6 trunk)
-             TL-SG108E Switch
-          ↓           ↓          ↓         ↓
-       Port 3      Port 4    Port 5    Port 7
-      Laptop/     Android   Home TV   PoE Injector
-      Trusted       TV               → EAP245 AP
-      (VLAN10)   (VLAN20)  (VLAN20)
-                              ↓
-                           Port 6
-                            PS5
-                          (VLAN20)
-```
+![Network Topology](diagrams/network-topology.png)
+
 
 ---
 
@@ -83,7 +70,7 @@ Firewall rules enforce zero lateral movement between zones. IoT and Guest device
 
 ## VPN
 
-WireGuard VPN server configured on the ER605 for encrypted remote access. CG-NAT from Virgin Plus prevents direct external connections — Tailscale used as a relay for remote access.
+WireGuard VPN server configured on the ER605 for encrypted remote access. CG-NAT from Virgin Plus prevents direct external connections Tailscale used as a relay for remote access.
 
 ---
 
@@ -99,23 +86,21 @@ VLAN isolation was verified using ping tests across all zone boundaries:
 
 ---
 
-## Repository Structure
+## Screenshot Documentation
 
-```
-home-network-security-lab/
-├── README.md
-├── diagrams/
-│   └── network-topology.md
-├── config/
-│   ├── vlan-table.md
-│   ├── firewall-rules.md
-│   ├── switch-port-config.md
-│   └── vpn-setup.md
-├── threat-model/
-│   └── threat-model.md
-└── verification/
-    └── test-results.md
-```
+All configuration steps are documented with screenshots in the `screenshots/` folder. Key screenshots:
+
+| Screenshot | Description |
+|------------|-------------|
+| 02 | ER605 WAN connected: IP 192.168.2.43 |
+| 08 | All 4 VLANs created on ER605 |
+| 19 | All 4 firewall isolation rules complete |
+| 23b | Hand-drawn switch port plan (planning phase) |
+| 27 | Switch PVID settings complete |
+| 39 | EAP245 VLAN assignments: SSIDs mapped to VLANs 10/20/30 |
+| 41 | Switch final VLAN config: all 4 VLANs with Port 7 trunk |
+| 46 | WireGuard peer handshake active: 97MB TX confirmed |
+| 48 | Hub 4000 port forwarding: UDP 51820 → ER605 |
 
 ---
 
