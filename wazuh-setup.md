@@ -14,7 +14,7 @@ Wazuh provides Security Information and Event Management (SIEM) and Extended Det
 
 \- \*\*Wazuh Agent:\*\* Running on Raspberry Pi 5 (pihole)
 
-\- \*\*Communication:\*\* Via Tailscale (100.84.249.29 ↔ 100.122.220.89)
+\- \*\*Communication:\*\* Via Tailscale (100.84.2**.** ↔ 100.122.2**.8*)
 
 
 
@@ -76,14 +76,10 @@ docker compose up -d
 
 
 
-\### Dashboard Access
-
-\- URL: https://localhost
-
-\- Username: admin
-
-\- Password: SecretPassword
-
+### Dashboard Access
+- URL: https://localhost
+- Username: ****
+- Password: [set during deployment — see docker-compose.yml]
 
 
 \## Agent Installation (Raspberry Pi)
@@ -94,9 +90,9 @@ docker compose up -d
 
 ```bash
 
-sudo WAZUH\_MANAGER='100.84.249.29' apt install wazuh-agent=4.9.2-1 -y
+sudo WAZUH\_MANAGER='100.84.2**.**' apt install wazuh-agent=4.9.2-1 -y
 
-sudo sed -i 's/MANAGER\_IP/100.84.249.29/' /var/ossec/etc/ossec.conf
+sudo sed -i 's/MANAGER\_IP/100.84.2**.**/' /var/ossec/etc/ossec.conf
 
 sudo systemctl enable wazuh-agent
 
